@@ -1,6 +1,8 @@
 {
   "name": "hooks-api-todolist",
   "version": "0.1.0",
+  "author": "Flavien Schriever <WTFlay>", 
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
