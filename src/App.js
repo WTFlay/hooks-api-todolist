@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import TodoList from "./components/TodoList";
 import TodoDoneList from "./components/TodoDoneList";
+import TodoStore from "./stores/TodoStore";
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <TodoStore>
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -16,8 +17,8 @@ class App extends Component {
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </TodoStore>
+  );
+};
 
 export default App;

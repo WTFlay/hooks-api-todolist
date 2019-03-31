@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TodoDoneItem from "./TodoDoneItem";
+import { TodoContext } from "../stores/TodoStore";
 
 const TodoDoneList = () => {
-
-  const todos = [
-    "Some item"
-  ];
+  const { doneTodos } = useContext(TodoContext);
 
   return (
     <div className="todolist">
       <h1>Already Done</h1>
       <ul id="done-items" className="list-unstyled">
-        {todos.map((item, index) => (
-          <li key={index}>
-            <TodoDoneItem text={item} />
+        {doneTodos.map(item => (
+          <li key={item.id}>
+            <TodoDoneItem todo={item} />
           </li>
         ))}
       </ul>

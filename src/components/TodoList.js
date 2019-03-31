@@ -1,30 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TodoContext } from "../stores/TodoStore";
 import TodoItem from "./TodoItem";
 import TodoLeft from "./TodoLeft";
+import AddTodo from "./AddTodo";
 
 const TodoList = () => {
+  const { todos, doneTodo } = useContext(TodoContext);
 
-  const todos = [
-    "Take out the trash",
-    "Buy bread",
-    "Teach penguins to fly"
-  ];
+  const handleDoneAll = () => {
+    [...todos].forEach(item => {
+      doneTodo(item.id);
+    });
+  };
 
   return (
     <div className="todolist not-done">
       <h1>Todos</h1>
-      <input type="text" className="form-control add-todo" placeholder="Add todo"/>
-      <button id="checkAll" className="btn btn-success">Mark all as done</button>
+      <AddTodo />
+      <button
+        id="checkAll"
+        className="btn btn-success"
+        onClick={handleDoneAll}
+      >
+        Mark all as done
+      </button>
       <hr/>
       <ul id="sortable" className="list-unstyled">
-        {todos.map((item, index) => (
-          <li key={index} className="ui-state-default">
-            <TodoItem text={item} />
+        {todos.map(item => (
+          <li key={item.id} className="ui-state-default">
+            <TodoItem todo={item} />
           </li>
         ))}
       </ul>
       <div className="todo-footer">
-        <TodoLeft />
+        <TodoLeft total={todos.length} />
       </div>
     </div>
   );

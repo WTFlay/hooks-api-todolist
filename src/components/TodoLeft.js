@@ -1,11 +1,11 @@
 import React from 'react';
 
-const TodoLeft = () => {
+const TodoLeft = ({ total }) => {
   return (
     <div>
       <strong>
         <span className="count-todos">
-          5&nbsp;
+          {total}&nbsp;
         </span>
       </strong>
       items left

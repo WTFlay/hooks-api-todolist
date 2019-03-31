@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TodoContext } from "../stores/TodoStore";
 
-const TodoDoneItem = ({ text }) => {
+const TodoDoneItem = ({ todo }) => {
+  const { removeTodo } = useContext(TodoContext);
+
+  const handleRemove = () => {
+    removeTodo(todo.id);
+  };
+
   return (
     <div>
-      {text}
-      <button className="remove-item btn btn-default btn-xs pull-right">
-        <span className="glyphicon glyphicon-remove"/>
+      {todo.text}
+      <button
+        className="remove-item btn btn-default btn-xs pull-right"
+        onClick={handleRemove}
+      >
+        <span className="glyphicon glyphicon-remove" />
       </button>
     </div>
   );
