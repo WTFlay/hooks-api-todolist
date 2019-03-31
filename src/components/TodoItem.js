@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { TodoContext } from "../stores/TodoStore";
+import { DoneContext } from "../stores/DoneStore";
 
 const TodoItem = ({ todo }) => {
-  const { doneTodo } = useContext(TodoContext);
+  const { addTodo } = useContext(DoneContext);
+  const { removeTodo } = useContext(TodoContext);
 
   const handleChange = () => {
-    doneTodo(todo.id);
+    addTodo(todo);
+    removeTodo(todo.id);
   };
 
   return (

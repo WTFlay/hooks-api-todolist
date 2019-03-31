@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { TodoContext } from "../stores/TodoStore";
+import { DoneContext } from "../stores/DoneStore";
 
 const TodoDoneItem = ({ todo }) => {
-  const { removeTodo } = useContext(TodoContext);
+  const { removeTodo } = useContext(DoneContext);
 
   const handleRemove = () => {
     removeTodo(todo.id);

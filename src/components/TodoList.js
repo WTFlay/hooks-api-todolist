@@ -2,28 +2,19 @@ import React, { useContext } from 'react';
 import { TodoContext } from "../stores/TodoStore";
 import TodoItem from "./TodoItem";
 import TodoLeft from "./TodoLeft";
-import AddTodo from "./AddTodo";
+import AddTodoInput from "./AddTodoInput";
+import AllDoneButton from "./AllDoneButton";
 
 const TodoList = () => {
-  const { todos, doneTodo } = useContext(TodoContext);
+  console.log('TodoList render');
 
-  const handleDoneAll = () => {
-    [...todos].forEach(item => {
-      doneTodo(item.id);
-    });
-  };
+  const { todos } = useContext(TodoContext);
 
   return (
     <div className="todolist not-done">
       <h1>Todos</h1>
-      <AddTodo />
-      <button
-        id="checkAll"
-        className="btn btn-success"
-        onClick={handleDoneAll}
-      >
-        Mark all as done
-      </button>
+      <AddTodoInput />
+      <AllDoneButton />
       <hr/>
       <ul id="sortable" className="list-unstyled">
         {todos.map(item => (

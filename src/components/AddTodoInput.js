@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { TodoContext } from "../stores/TodoStore";
 
-const AddTodo = () => {
+const AddTodoInput = () => {
   const [text, setText] = useState('');
   const { addTodo } = useContext(TodoContext);
 
@@ -30,4 +30,4 @@ const AddTodo = () => {
   );
 };
 
-export default AddTodo;
+export default AddTodoInput;
